@@ -427,7 +427,7 @@ export default function AccountsPage() {
   const { data, loading, refetch } = useApi(() => api.accounts.list())
   const [selectedAccountId,  setSelectedAccountId]  = useState<string | null>(null)
   
-  const selectedAccount = data?.data.find(a => a.id === selectedAccountId) ?? null
+  const selectedAccount = data?.data?.find(a => a.id === selectedAccountId) ?? null
 
   const handleSelectAccount = useCallback((id: string) => {
     setSelectedAccountId(prev => prev === id ? null : id)
