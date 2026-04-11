@@ -65,8 +65,8 @@ export default function AppLayout() {
     navigate('/', { replace: true })
   }
 
-  const avatarUrl    = user?.user_metadata?.avatar_url as string | undefined
-  const displayName  = (user?.user_metadata?.full_name as string | undefined)
+  const avatarUrl    = user?.picture as string | undefined
+  const displayName  = (user?.name as string | undefined)
     ?? user?.email?.split('@')[0] ?? 'User'
 
   // ── Sidebar inner content (shared desktop + mobile) ───────────────────────

@@ -1,13 +1,14 @@
-import { supabase } from './supabase'
+import { getCurrentUser } from './google-auth'
 
 const API_URL = import.meta.env.VITE_API_URL ?? 'http://localhost:8080/v1'
 
 async function getAuthHeaders(): Promise<HeadersInit> {
-  const { data: { session } } = await supabase.auth.getSession()
-  if (!session) throw new Error('Tidak terautentikasi')
+  const user = getCurrentUser()
+  const token = localStorage.getItem('google_auth_token')
+  if (!user || !token) throw new Error('Tidak terautentikasi')
   return {
     'Content-Type': 'application/json',
-    'Authorization': `Bearer ${session.access_token}`,
+    'Authorization': `Bearer ${token}`,
   }
 }
 
@@ -78,7 +79,7 @@ export const api = {
       if (params?.month)      q.set('month',      String(params.month))
       if (params?.year)       q.set('year',       String(params.year))
       if (params?.account_id) q.set('account_id', params.account_id)
-      if (params?.page)       q.set('page',       String(params.page ?? 1))
+      if (params?.page)       q.set('page',       String(params?.page ?? 1))
       q.set('per_page', '20')
       return request<TransferListResponse>(`/transfers?${q}`)
     },

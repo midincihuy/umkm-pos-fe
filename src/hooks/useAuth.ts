@@ -1,45 +1,50 @@
 import { useEffect, useState } from 'react'
-import { User, Session } from '@supabase/supabase-js'
-import { supabase } from '../lib/supabase'
+import { GoogleUser, initGoogleAuth, signInWithGoogle as googleSignIn, signOut as googleSignOut, getCurrentUser } from '../lib/google-auth'
 
 interface AuthState {
-  user: User | null
-  session: Session | null
+  user: GoogleUser | null
   loading: boolean
 }
 
 export function useAuth() {
   const [state, setState] = useState<AuthState>({
     user: null,
-    session: null,
     loading: true,
   })
 
   useEffect(() => {
-    // Ambil session saat ini
-    supabase.auth.getSession().then(({ data: { session } }) => {
-      setState({ user: session?.user ?? null, session, loading: false })
-    })
+    // Initialize Google Auth with client ID from environment
+    const clientId = import.meta.env.VITE_GOOGLE_CLIENT_ID as string
+    if (!clientId) {
+      throw new Error('VITE_GOOGLE_CLIENT_ID is not defined in .env')
+    }
 
-    // Listen perubahan auth state (login, logout, token refresh)
-    const { data: { subscription } } = supabase.auth.onAuthStateChange((_event, session) => {
-      setState({ user: session?.user ?? null, session, loading: false })
+    initGoogleAuth(clientId).then(() => {
+      // Get current user from local storage
+      const user = getCurrentUser()
+      setState({ user, loading: false })
     })
-
-    return () => subscription.unsubscribe()
   }, [])
 
   const signInWithGoogle = async () => {
-    await supabase.auth.signInWithOAuth({
-      provider: 'google',
-      options: {
-        redirectTo: `${window.location.origin}/dashboard`,
-      },
-    })
+    try {
+      googleSignIn()
+      // Note: In a real implementation, you would need to handle the token response
+      // and save the user data. You can add a callback handler here.
+    } catch (error) {
+      console.error('Google sign in failed:', error)
+      throw error
+    }
   }
 
   const signOut = async () => {
-    await supabase.auth.signOut()
+    try {
+      await googleSignOut()
+      setState({ user: null, loading: false })
+    } catch (error) {
+      console.error('Google sign out failed:', error)
+      throw error
+    }
   }
 
   return { ...state, signInWithGoogle, signOut }

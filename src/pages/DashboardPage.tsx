@@ -49,7 +49,7 @@ export default function DashboardPage() {
   const handleTourDismiss = () => {
     onboarding.dismiss()
   }
-  const displayName = (user?.user_metadata?.full_name as string | undefined)?.split(' ')[0] ?? 'Kamu'
+  const displayName = (user?.name as string | undefined)?.split(' ')[0] ?? 'Kamu'
 
   const summary = useApi(() => api.reports.summary(currentMonth, currentYear))
   const netWorth = useApi(() => api.reports.netWorth())
