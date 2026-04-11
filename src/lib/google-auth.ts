@@ -21,7 +21,9 @@ export interface AuthState {
   loading: boolean;
 }
 
-// Extend window interface for TypeScript
+type AuthChangeListener = (user: GoogleUser | null) => void;
+
+// Declare Google Identity Services on window
 declare global {
   interface Window {
     google?: {
@@ -42,6 +44,7 @@ declare global {
 
 // Initialize Google OAuth client
 let googleClient: any = null;
+let listeners: AuthChangeListener[] = [];
 
 // Load Google Identity Services script dynamically
 function loadGoogleIdentityScript(): Promise<void> {
@@ -61,6 +64,11 @@ function loadGoogleIdentityScript(): Promise<void> {
   });
 }
 
+// Notify all listeners of auth state changes
+function notifyListeners(user: GoogleUser | null) {
+  listeners.forEach(listener => listener(user));
+}
+
 // Initialize Google OAuth client
 export async function initGoogleAuth(clientId: string): Promise<void> {
   if (!clientId) {
@@ -77,9 +85,17 @@ export async function initGoogleAuth(clientId: string): Promise<void> {
   googleClient = window.google.accounts.oauth2.initTokenClient({
     client_id: clientId,
     scope: 'openid email profile',
-    callback: (tokenResponse) => {
+    callback: async (tokenResponse) => {
       if (tokenResponse && tokenResponse.access_token) {
-        fetchUserInfo(tokenResponse.access_token);
+        try {
+          const user = await fetchUserInfo(tokenResponse.access_token);
+          notifyListeners(user);
+        } catch (error) {
+          console.error('Failed to fetch user info:', error);
+          notifyListeners(null);
+        }
+      } else {
+        notifyListeners(null);
       }
     },
   });
@@ -132,14 +148,32 @@ export function signInWithGoogle(): void {
 
 // Sign out from Google
 export async function signOut(): Promise<void> {
-  // Implementation depends on your needs
-  // You can revoke the token or clear local storage
+  // Remove auth data
   localStorage.removeItem('google_auth_user');
   localStorage.removeItem('google_auth_token');
+
+  // Notify listeners
+  notifyListeners(null);
 }
 
 // Get current user from local storage
 export function getCurrentUser(): GoogleUser | null {
-  const user = localStorage.getItem('google_auth_user');
-  return user ? JSON.parse(user) : null;
+  try {
+    const user = localStorage.getItem('google_auth_user');
+    return user ? JSON.parse(user) : null;
+  } catch (error) {
+    localStorage.removeItem('google_auth_user');
+    localStorage.removeItem('google_auth_token');
+    return null;
+  }
+}
+
+// Subscribe to auth state changes
+export function onAuthStateChange(callback: AuthChangeListener): () => void {
+  listeners.push(callback);
+
+  // Return unsubscribe function
+  return () => {
+    listeners = listeners.filter(listener => listener !== callback);
+  };
 }
