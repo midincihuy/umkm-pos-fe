@@ -13,6 +13,7 @@ import DebtsPage from './pages/DebtsPage'
 import CategoriesPage from './pages/CategoriesPage'
 import ReconciliationsPage from './pages/ReconciliationsPage'
 import OnboardingPage from './pages/OnboardingPage'
+import SpreadsheetPage from './pages/SpreadsheetPage'
 import AppLayout from './components/layout/AppLayout'
 
 function ProtectedRoute({ children }: { children: React.ReactNode }) {
@@ -48,7 +49,7 @@ export default function App() {
             <Route path="debts"           element={<DebtsPage />} />
             <Route path="categories"      element={<CategoriesPage />} />
             <Route path="reconciliations" element={<ReconciliationsPage />} />
-            <Route path="spreadsheet"      element={<OnboardingPage />} />
+            <Route path="spreadsheet"     element={<SpreadsheetPage />} />
           </Route>
         </Routes>
       </BrowserRouter>
