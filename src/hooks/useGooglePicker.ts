@@ -13,7 +13,6 @@ export const useGooglePicker = (): GooglePickerResult => {
   useEffect(() => {
     // Check for existing auth token on mount
     const token = localStorage.getItem('google_auth_token')
-    const user = localStorage.getItem('google_auth_user')
 
     setAccessToken(token || null)
     setLoading(false)

@@ -307,4 +307,5 @@ export interface Spreadsheet {
 
 export interface SpreadsheetResponse {
   data: Spreadsheet;
+  spreadsheet_id? : string;
 }
