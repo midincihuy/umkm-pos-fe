@@ -1,5 +1,6 @@
 import { Wallet, TrendingUp, TrendingDown, ArrowLeftRight, RefreshCw, Eye, EyeOff, } from 'lucide-react'
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
+import { useNavigate } from 'react-router-dom'
 
 import OnboardingTour from '../components/onboarding/OnboardingTour'
 import { useOnboarding } from '../hooks/useOnboarding'
@@ -20,6 +21,7 @@ export default function DashboardPage() {
   const [showBalance, setShowBalance] = useState(() => {
     return localStorage.getItem('showBalance') !== 'false'
   })
+  const navigate = useNavigate()
 
   const toggleBalance = () => {
     const newValue = !showBalance
@@ -33,9 +35,16 @@ export default function DashboardPage() {
   }
 
   const { user } = useAuth()
+  const onboarding = useOnboarding()
+
+  // ── Redirect to onboarding if no spreadsheet ───────────────────────────
+  useEffect(() => {
+    if (!onboarding.loading && onboarding.status === 'no_spreadsheet') {
+      navigate('/onboarding')
+    }
+  }, [onboarding.status, onboarding.loading, navigate])
 
   // ── Onboarding tour ──────────────────────────────────────────────────────
-  const onboarding = useOnboarding()
   const showTour = !onboarding.loading &&
     (onboarding.status === 'no_account' || onboarding.status === 'no_transaction')
 

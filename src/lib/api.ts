@@ -1,4 +1,4 @@
-import { getCurrentUser } from './google-auth'
+import { getCurrentUser, signOut } from './google-auth'
 
 const API_URL = import.meta.env.VITE_API_URL ?? 'http://localhost:8080/v1'
 
@@ -17,6 +17,14 @@ async function request<T>(path: string, options: RequestInit = {}): Promise<T> {
   const res = await fetch(`${API_URL}${path}`, { ...options, headers })
   if (!res.ok) {
     const err = await res.json().catch(() => ({ message: 'Terjadi kesalahan' }))
+
+    // Handle 401 Unauthorized errors
+    if (res.status === 401) {
+      // Sign out the user and clear storage
+      await signOut()
+      throw new Error('Sesi anda telah berakhir, silakan login kembali')
+    }
+
     throw new Error(err.message ?? 'Terjadi kesalahan')
   }
   const json = await res.json()
@@ -129,6 +137,11 @@ export const api = {
     me: () => request<UserProfile>('/auth/me'),
     update: (body: { name?: string; currency?: string }) =>
       request<UserProfile>('/auth/me', { method: 'PATCH', body: JSON.stringify(body) }),
+  },
+  spreadsheet: {
+    get: () => request<SpreadsheetResponse>('/spreadsheet'),
+    set: (body: { spreadsheet_id: string }) =>
+      request<SpreadsheetResponse>('/spreadsheet/save', { method: 'POST', body: JSON.stringify(body) }),
   },
 }
 
@@ -285,4 +298,13 @@ export interface CashAdjustment {
 }
 export interface CreateReconciliationBody {
   account_id: string; actual_balance: number; date: string; notes?: string
+}
+
+// ── Spreadsheet ─────────────────────────────────────────────────────────────
+export interface Spreadsheet {
+  spreadsheet_id: string;
+}
+
+export interface SpreadsheetResponse {
+  data: Spreadsheet;
 }
