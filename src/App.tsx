@@ -48,7 +48,7 @@ export default function App() {
             <Route path="debts"           element={<DebtsPage />} />
             <Route path="categories"      element={<CategoriesPage />} />
             <Route path="reconciliations" element={<ReconciliationsPage />} />
-            <Route path="onboarding"      element={<OnboardingPage />} />
+            <Route path="spreadsheet"      element={<OnboardingPage />} />
           </Route>
         </Routes>
       </BrowserRouter>

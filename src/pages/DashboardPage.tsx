@@ -40,7 +40,7 @@ export default function DashboardPage() {
   // ── Redirect to onboarding if no spreadsheet ───────────────────────────
   useEffect(() => {
     if (!onboarding.loading && onboarding.status === 'no_spreadsheet') {
-      navigate('/onboarding')
+      navigate('/spreadsheet')
     }
   }, [onboarding.status, onboarding.loading, navigate])
 

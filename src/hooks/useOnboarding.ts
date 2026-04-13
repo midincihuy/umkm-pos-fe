@@ -33,6 +33,8 @@ export interface OnboardingState {
   accountCount: number
   hasTransaction: boolean
   loading: boolean
+  spreadsheetId?: string
+  spreadsheetData?: any
   /** Panggil setelah user berhasil buat rekening/transaksi → refresh dari DB */
   refetch: () => void
   /** Panggil saat user klik "Lewati" → simpan dismiss flag, tour tidak muncul lagi */
@@ -75,6 +77,8 @@ export function useOnboarding(): OnboardingState {
   const accountCount   = activeAccounts.length
   const hasTransaction = (txData?.meta?.total ?? 0) > 0
   const hasSpreadsheet = !!spreadsheetData?.spreadsheet_id
+  const spreadsheetId = spreadsheetData?.spreadsheet_id
+  const spreadsheetDataRaw = spreadsheetData;
 
   // Kalau user sudah punya spreadsheet → dismiss flag tidak relevan, clear it
   if (hasSpreadsheet && isDismissed()) clearDismissed()
@@ -89,5 +93,5 @@ export function useOnboarding(): OnboardingState {
   // Kalau user dismiss dan belum punya rekening → sembunyikan tour
   if (dismissed && accountCount === 0 && hasSpreadsheet) status = 'complete'
 
-  return { status, accountCount, hasTransaction, loading: false, refetch, dismiss }
+  return { status, accountCount, hasTransaction, loading: false, spreadsheetId, spreadsheetData: spreadsheetDataRaw, refetch, dismiss };
 }
