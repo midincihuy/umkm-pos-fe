@@ -23,25 +23,6 @@ export interface AuthState {
 
 type AuthChangeListener = (user: GoogleUser | null) => void;
 
-// Declare Google Identity Services on window
-declare global {
-  interface Window {
-    google?: {
-      accounts: {
-        oauth2: {
-          initTokenClient: (config: {
-            client_id: string;
-            scope: string;
-            callback: (tokenResponse: { access_token?: string }) => void;
-          }) => {
-            requestAccessToken: () => void;
-          };
-        };
-      };
-    };
-  }
-}
-
 // Initialize Google OAuth client
 let googleClient: any = null;
 let listeners: AuthChangeListener[] = [];

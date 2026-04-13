@@ -7,18 +7,6 @@ interface GooglePickerProps {
   disabled?: boolean
 }
 
-declare global {
-  interface Window {
-    google: {
-      picker: any
-      load: (api: string, version: string, config: { callback: () => void }) => void
-    }
-    gapi: {
-      load: (api: string, options: { callback: () => void; apiKey?: string }) => void
-    }
-  }
-}
-
 export const GooglePicker: React.FC<GooglePickerProps> = ({ onSelect, className, disabled }) => {
   const buttonRef = useRef<HTMLButtonElement>(null)
   const [pickerLoaded, setPickerLoaded] = useState(false)
@@ -32,7 +20,7 @@ export const GooglePicker: React.FC<GooglePickerProps> = ({ onSelect, className,
       return
     }
 
-    let timeoutId: NodeJS.Timeout
+    let timeoutId: ReturnType<typeof setTimeout>
     const script = document.createElement('script')
     script.src = 'https://apis.google.com/js/api.js'
     script.async = true
@@ -59,7 +47,7 @@ export const GooglePicker: React.FC<GooglePickerProps> = ({ onSelect, className,
           },
           apiKey: import.meta.env.VITE_GOOGLE_API_KEY,
         })
-      } else if (window.google) {
+      } else if (window.google?.load) {
         window.google.load('picker', '1', () => {
           clearTimeout(timeoutId)
           setPickerLoaded(true)
@@ -94,12 +82,18 @@ export const GooglePicker: React.FC<GooglePickerProps> = ({ onSelect, className,
         return
       }
 
+      if (!window.google?.picker?.PickerBuilder) {
+        console.error('Google Picker is not loaded')
+        setLoadError(true)
+        return
+      }
+
       const pickerBuilder = new window.google.picker.PickerBuilder()
         .addView(window.google.picker.ViewId.SPREADSHEETS)
         .setDeveloperKey(import.meta.env.VITE_GOOGLE_API_KEY)
         .setOAuthToken(accessToken)
         .setCallback((data: any) => {
-          if (data.action === window.google.picker.Action.PICKED) {
+          if (data.action === window.google?.picker?.Action.PICKED) {
             const document = data.docs[0]
             onSelect(document)
           }
