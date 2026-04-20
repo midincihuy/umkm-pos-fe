@@ -36,7 +36,7 @@ const SpreadsheetPage: React.FC = () => {
   const handleRemoveSpreadsheet = async () => {
     setDeleting(true)
     try {
-      await api.spreadsheet.set({ spreadsheet_id: null })
+      await api.spreadsheet.set({ spreadsheet_id: "" })
       refetch()
       setShowDeleteConfirm(false)
       setShowPicker(true)

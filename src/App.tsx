@@ -12,7 +12,6 @@ import TransfersPage from './pages/TransfersPage'
 import DebtsPage from './pages/DebtsPage'
 import CategoriesPage from './pages/CategoriesPage'
 import ReconciliationsPage from './pages/ReconciliationsPage'
-import OnboardingPage from './pages/OnboardingPage'
 import SpreadsheetPage from './pages/SpreadsheetPage'
 import AppLayout from './components/layout/AppLayout'
 

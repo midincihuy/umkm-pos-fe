@@ -3,7 +3,8 @@ import { useState } from 'react'
 import {
   LayoutDashboard, ArrowLeftRight, CreditCard, PiggyBank,
   BarChart3, LogOut, Menu, X, Wallet,
-  ArrowUpDown, Tag, HandCoins, RefreshCw, ChevronRight, ChevronLeft
+  ArrowUpDown, Tag, HandCoins, RefreshCw, ChevronRight, ChevronLeft,
+  FileSpreadsheet
 } from 'lucide-react'
 import { useAuth } from '../../hooks/useAuth'
 import { cn } from '../../lib/utils'
@@ -30,8 +31,9 @@ const navGroups = [
   {
     label: 'Pengaturan',
     items: [
-      { to: '/categories',      icon: Tag,       label: 'Kategori' },
-      { to: '/reconciliations', icon: RefreshCw, label: 'Rekonsiliasi' },
+      { to: '/categories',      icon: Tag,              label: 'Kategori' },
+      { to: '/reconciliations', icon: RefreshCw,        label: 'Rekonsiliasi' },
+      { to: '/spreadsheet',     icon: FileSpreadsheet,  label: 'Spreadsheet' },
     ],
   },
 ]

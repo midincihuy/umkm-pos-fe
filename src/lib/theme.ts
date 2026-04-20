@@ -17,7 +17,7 @@
 export type ThemeName = 'green-lime' | 'purple' | 'navy-cyan' | 'orange' | 'rose' | 'earth'
 
 // ✏️ UBAH DI SINI
-export const ACTIVE_THEME: ThemeName = 'purple'
+export const ACTIVE_THEME: ThemeName = 'green-lime'
 
 // ─────────────────────────────────────────────────────────────────────────────
 // Tipe token

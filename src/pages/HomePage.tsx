@@ -155,7 +155,7 @@ function DashboardMockup() {
             <div className="w-3 h-3 rounded-full" style={{ background: theme.heroDotColor }} />
           </div>
           <div className="flex-1 mx-4 rounded-md px-3 py-1 text-xs font-mono" style={{ background: theme.mockupUrlBg, color: theme.mockupUrlText }}>
-            dompet.midin.my.id/dashboard
+            app.umkm.my.id/dashboard
           </div>
         </div>
 
@@ -418,7 +418,7 @@ export default function HomePage() {
           <div className="w-9 h-9 rounded-xl flex items-center justify-center shadow-sm" style={{ background: theme.logoBg }}>
             <Wallet size={17} className="text-white" />
           </div>
-          <span className={cn('font-display font-bold text-lg', theme.heroHeadingText)}>Dompet Keluargaku</span>
+          <span className={cn('font-display font-bold text-lg', theme.heroHeadingText)}>UMKM P.O.S</span>
         </div>
         <div className={cn('hidden md:flex items-center gap-8 text-sm', theme.sectionBodyText)}>
           {[['#fitur', 'Fitur'], ['#testimoni', 'Testimoni'], ['#mulai', 'Mulai']].map(([h, l]) => (
@@ -459,7 +459,7 @@ export default function HomePage() {
           </h1>
           <p className={cn('mt-6 text-lg md:text-xl max-w-2xl mx-auto leading-relaxed animate-fade-up', theme.heroBodyText)}
             style={{ animationDelay: '120ms', animationFillMode: 'both' }}>
-            Dompet Keluargaku membantu kamu mencatat pemasukan & pengeluaran, mengatur budget, melacak hutang, dan memvisualisasikan kondisi keuangan keluarga — semua dalam satu aplikasi.
+            UMKM P.O.S membantu kamu mencatat pemasukan & pengeluaran, mengatur budget, melacak hutang, dan memvisualisasikan kondisi keuangan keluarga — semua dalam satu aplikasi.
           </p>
         </div>
 
@@ -511,7 +511,7 @@ export default function HomePage() {
         <Section className="text-center mb-16">
           <p className={cn('text-sm font-bold uppercase tracking-widest mb-4', theme.sectionLabelText)}>Fitur Unggulan</p>
           <h2 className={cn('font-display font-bold text-4xl md:text-5xl mb-4', theme.sectionHeadText)}>Semua yang kamu butuhkan</h2>
-          <p className={cn('text-lg max-w-xl mx-auto', theme.sectionBodyText)}>Dari pencatatan harian hingga analisis bulanan — Dompet Keluargaku punya semua fitur yang kamu butuhkan.</p>
+          <p className={cn('text-lg max-w-xl mx-auto', theme.sectionBodyText)}>Dari pencatatan harian hingga analisis bulanan — UMKM P.O.S punya semua fitur yang kamu butuhkan.</p>
         </Section>
         <div className="space-y-24">
           {FEATURES.map((f, i) => <FeatureCard key={f.title} feat={f} index={i} />)}
@@ -564,9 +564,9 @@ export default function HomePage() {
               <div className="w-7 h-7 rounded-lg flex items-center justify-center" style={{ background: theme.logoBg }}>
                 <Wallet size={13} className="text-white" />
               </div>
-              <span className={cn('font-display font-bold', theme.heroHeadingText)}>Dompet Keluargaku</span>
+              <span className={cn('font-display font-bold', theme.heroHeadingText)}>UMKM P.O.S</span>
             </div>
-            <p className={cn('text-sm', theme.footerText)}>© {new Date().getFullYear()} Dompet Keluargaku. Dibuat dengan ❤️ untuk keluarga Indonesia.</p>
+            <p className={cn('text-sm', theme.footerText)}>© {new Date().getFullYear()} UMKM P.O.S. Dibuat dengan ❤️ untuk UMKM di Indonesia.</p>
             <div className={cn('flex items-center gap-2', theme.footerText)}>
               <Sprout size={13} className={theme.accentText} />
               <span className="text-xs">Catat · Analisis · Kontrol</span>
@@ -575,7 +575,7 @@ export default function HomePage() {
           {/* Support email */}
           <div className="flex justify-center">
             <a
-              href="mailto:dompet@midin.my.id"
+              href="mailto:umkm@midin.my.id"
               className={cn(
                 'flex items-center gap-2 px-4 py-2 rounded-xl text-xs font-medium transition-all',
                 'hover:opacity-80',
@@ -587,7 +587,7 @@ export default function HomePage() {
                 <rect width="20" height="16" x="2" y="4" rx="2" />
                 <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7" />
               </svg>
-              Butuh bantuan? Hubungi kami di dompet@midin.my.id
+              Butuh bantuan? Hubungi kami di umkm@midin.my.id
             </a>
           </div>
         </div>
