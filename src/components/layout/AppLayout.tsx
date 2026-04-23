@@ -3,7 +3,7 @@ import { useState } from 'react'
 import {
   LayoutDashboard, ArrowLeftRight, CreditCard, PiggyBank,
   BarChart3, LogOut, Menu, X, MonitorCheck,
-  ArrowUpDown, Tag, HandCoins, RefreshCw, ChevronRight, ChevronLeft,
+  ArrowUpDown, Tag, HandCoins, RefreshCw, ChevronLeft,
   FileSpreadsheet
 } from 'lucide-react'
 import { useAuth } from '../../hooks/useAuth'

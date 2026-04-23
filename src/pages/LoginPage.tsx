@@ -1,6 +1,7 @@
 import { useEffect } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { useAuth } from '../hooks/useAuth'
+import theme from '../lib/theme'
 
 export default function LoginPage() {
   const { user, loading, signInWithGoogle } = useAuth()
@@ -11,13 +12,17 @@ export default function LoginPage() {
   }, [user, loading, navigate])
 
   return (
-    <div className="min-h-screen relative overflow-hidden bg-[#0a0614] flex items-center justify-center">
+    <div className="min-h-screen relative overflow-hidden flex items-center justify-center"
+         style={{ backgroundColor: theme.loginPageBg }}>
 
       {/* Animated background blobs */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
-        <div className="absolute -top-40 -left-40 w-[600px] h-[600px] rounded-full bg-brand-600/20 blur-[120px] animate-pulse-slow" />
-        <div className="absolute -bottom-40 -right-40 w-[500px] h-[500px] rounded-full bg-ocean-400/20 blur-[100px] animate-pulse-slow" style={{ animationDelay: '1.5s' }} />
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[400px] h-[400px] rounded-full bg-coral-400/10 blur-[80px] animate-pulse-slow" style={{ animationDelay: '3s' }} />
+        <div className="absolute -top-40 -left-40 w-[600px] h-[600px] rounded-full blur-[120px] animate-pulse-slow"
+             style={{ background: theme.loginGlow1 }} />
+        <div className="absolute -bottom-40 -right-40 w-[500px] h-[500px] rounded-full blur-[100px] animate-pulse-slow"
+             style={{ background: theme.loginGlow2, animationDelay: '1.5s' }} />
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[400px] h-[400px] rounded-full blur-[80px] animate-pulse-slow"
+             style={{ background: theme.loginGlow3, animationDelay: '3s' }} />
 
         {/* Grid overlay */}
         <div
@@ -30,10 +35,14 @@ export default function LoginPage() {
       </div>
 
       {/* Floating orbs */}
-      <div className="absolute top-20 right-24 w-3 h-3 rounded-full bg-brand-400 animate-float opacity-60" />
-      <div className="absolute bottom-32 left-20 w-2 h-2 rounded-full bg-mint-400 animate-float opacity-50" style={{ animationDelay: '2s' }} />
-      <div className="absolute top-1/3 left-12 w-4 h-4 rounded-full bg-gold-400/50 animate-float" style={{ animationDelay: '1s' }} />
-      <div className="absolute bottom-1/4 right-16 w-2 h-2 rounded-full bg-ocean-400 animate-float opacity-60" style={{ animationDelay: '3s' }} />
+      <div className="absolute top-20 right-24 w-3 h-3 rounded-full animate-float opacity-60"
+           style={{ backgroundColor: theme.loginDotColor }} />
+      <div className="absolute bottom-32 left-20 w-2 h-2 rounded-full animate-float opacity-50"
+           style={{ backgroundColor: theme.loginDotColor, animationDelay: '2s', opacity: 0.5 }} />
+      <div className="absolute top-1/3 left-12 w-4 h-4 rounded-full animate-float"
+           style={{ backgroundColor: theme.loginDotColor, animationDelay: '1s', opacity: 0.5 }} />
+      <div className="absolute bottom-1/4 right-16 w-2 h-2 rounded-full animate-float opacity-60"
+           style={{ backgroundColor: theme.loginDotColor, animationDelay: '3s' }} />
 
       {/* Card */}
       <div className="relative z-10 w-full max-w-sm mx-4 animate-fade-up">
@@ -42,8 +51,10 @@ export default function LoginPage() {
         <div className="text-center mb-10">
           {/* Icon */}
           <div className="inline-flex items-center justify-center w-20 h-20 rounded-3xl mb-6 relative">
-            <div className="absolute inset-0 rounded-3xl bg-gradient-to-br from-brand-500 to-ocean-400 opacity-20 blur-xl" />
-            <div className="relative w-20 h-20 rounded-3xl bg-gradient-to-br from-brand-500 to-ocean-500 flex items-center justify-center shadow-glow">
+            <div className="absolute inset-0 rounded-3xl opacity-20 blur-xl"
+                 style={{ background: theme.loginIconBg }} />
+            <div className="relative w-20 h-20 rounded-3xl flex items-center justify-center shadow-glow"
+                 style={{ background: theme.loginIconBg }}>
               <svg width="36" height="36" viewBox="0 0 36 36" fill="none">
                 <path d="M6 10C6 8.34315 7.34315 7 9 7H27C28.6569 7 30 8.34315 30 10V26C30 27.6569 28.6569 29 27 29H9C7.34315 29 6 27.6569 6 26V10Z" fill="white" fillOpacity="0.15" stroke="white" strokeWidth="1.5"/>
                 <path d="M6 13H30" stroke="white" strokeWidth="1.5"/>
@@ -54,20 +65,28 @@ export default function LoginPage() {
             </div>
           </div>
 
-          <h1 className="font-display text-3xl font-bold text-white mb-2 tracking-tight">
+          <h1 className="font-display text-3xl font-bold mb-2 tracking-tight"
+              style={{ color: theme.loginHeadingText }}>
             Dompet Keluargaku
           </h1>
-          <p className="text-gray-400 text-sm font-body">
+          <p className="text-sm font-body"
+             style={{ color: theme.loginBodyText }}>
             Catat keuangan rumah tangga dengan mudah
           </p>
         </div>
 
         {/* Glass card */}
-        <div className="glass-dark rounded-3xl p-8 shadow-2xl">
-          <h2 className="font-display text-lg font-semibold text-white mb-1">
+        <div className="rounded-3xl p-8 shadow-2xl"
+             style={{
+               backgroundColor: theme.loginCardBg,
+               border: `1px solid ${theme.loginCardBorder}`,
+             }}>
+          <h2 className="font-display text-lg font-semibold mb-1"
+              style={{ color: theme.loginCardText }}>
             Masuk ke akun kamu
           </h2>
-          <p className="text-gray-400 text-sm mb-8">
+          <p className="text-sm mb-8"
+             style={{ color: theme.loginCardSubtext }}>
             Gunakan akun Google untuk masuk dengan aman
           </p>
 
@@ -75,7 +94,17 @@ export default function LoginPage() {
           <button
             onClick={signInWithGoogle}
             disabled={loading}
-            className="w-full flex items-center justify-center gap-3 bg-white hover:bg-gray-50 text-gray-800 font-semibold text-sm py-4 px-6 rounded-2xl transition-all duration-200 hover:shadow-lg hover:-translate-y-0.5 active:translate-y-0 disabled:opacity-50 disabled:cursor-not-allowed group"
+            className="w-full flex items-center justify-center gap-3 font-semibold text-sm py-4 px-6 rounded-2xl transition-all duration-200 hover:shadow-lg hover:-translate-y-0.5 active:translate-y-0 disabled:opacity-50 disabled:cursor-not-allowed group"
+            style={{
+              background: theme.loginBtnBg,
+              color: theme.loginBtnText,
+            }}
+            onMouseEnter={(e) => {
+              if (!loading) (e.currentTarget.style.background = theme.loginBtnHoverBg)
+            }}
+            onMouseLeave={(e) => {
+              e.currentTarget.style.background = theme.loginBtnBg
+            }}
           >
             {/* Google icon */}
             <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
@@ -84,29 +113,30 @@ export default function LoginPage() {
               <path d="M4.405 11.9A6.01 6.01 0 014.09 10c0-.663.114-1.305.314-1.9V5.51H1.064A9.995 9.995 0 000 10c0 1.614.386 3.14 1.064 4.49l3.34-2.59z" fill="#FBBC05"/>
               <path d="M10 3.977c1.468 0 2.786.505 3.822 1.496l2.868-2.868C14.959.99 12.695 0 10 0A9.996 9.996 0 001.064 5.51l3.34 2.59C5.192 5.736 7.396 3.977 10 3.977z" fill="#EA4335"/>
             </svg>
-            <span className="group-hover:text-gray-900 transition-colors">
+            <span className="transition-colors">
               {loading ? 'Memuat...' : 'Masuk dengan Google'}
             </span>
           </button>
 
           {/* Divider */}
           <div className="flex items-center gap-3 my-6">
-            <div className="flex-1 h-px bg-white/10" />
-            <span className="text-gray-500 text-xs">Atau</span>
-            <div className="flex-1 h-px bg-white/10" />
+            <div className="flex-1 h-px" style={{ backgroundColor: theme.loginDivider }} />
+            <span className="text-xs" style={{ color: theme.loginDividerText }}>Atau</span>
+            <div className="flex-1 h-px" style={{ backgroundColor: theme.loginDivider }} />
           </div>
 
           {/* Coming soon note */}
           <div className="text-center">
-            <p className="text-gray-500 text-xs">
+            <p className="text-xs" style={{ color: theme.loginCardSubtext }}>
               Login dengan email & password{' '}
-              <span className="text-brand-400 font-medium">segera hadir</span>
+              <span className="font-medium" style={{ color: theme.loginAccentText }}>segera hadir</span>
             </p>
           </div>
         </div>
 
         {/* Footer */}
-        <p className="text-center text-gray-600 text-xs mt-8">
+        <p className="text-center text-xs mt-8"
+           style={{ color: theme.loginFooterText }}>
           Data kamu tersimpan aman dan terenkripsi
         </p>
       </div>

@@ -157,6 +157,27 @@ export interface Theme {
   floatBadgeBorder:  string   // CSS: border floating badge
   floatBadgeShadow:  string   // CSS: shadow floating badge
   floatIconBg:       string   // CSS: bg icon floating badge
+
+  // ── Login ─────────────────────────────────────────────────────────────────
+  loginPageBg:        string   // CSS value: background halaman login
+  loginGlow1:         string   // CSS: radial-gradient blob 1
+  loginGlow2:         string   // CSS: radial-gradient blob 2
+  loginGlow3:         string   // CSS: radial-gradient blob 3
+  loginDotColor:      string   // CSS hex: warna dot pattern
+  loginHeadingText:   string   // CSS: warna heading / judul
+  loginBodyText:      string   // CSS: warna teks body / deskripsi
+  loginCardBg:        string   // CSS: bg kartu login
+  loginCardBorder:    string   // CSS: border kartu login
+  loginCardText:      string   // CSS: warna teks di kartu
+  loginCardSubtext:   string   // CSS: warna subteks di kartu
+  loginDivider:       string   // CSS: warna divider line
+  loginDividerText:   string   // CSS: warna teks divider
+  loginFooterText:    string   // CSS: warna teks footer
+  loginBtnBg:         string   // CSS: bg tombol login
+  loginBtnText:       string   // CSS: warna teks tombol login
+  loginBtnHoverBg:    string   // CSS: hover bg tombol login
+  loginAccentText:    string   // CSS: warna teks aksen (badge, highlight)
+  loginIconBg:        string   // CSS: gradient bg icon logo
 }
 
 // ─────────────────────────────────────────────────────────────────────────────
@@ -258,6 +279,25 @@ const themes: Record<ThemeName, Theme> = {
     floatBadgeBorder:  '1px solid #c6deb4',
     floatBadgeShadow:  '0 8px 24px rgba(77,124,15,0.12)',
     floatIconBg:       '#f0fae8',
+    loginPageBg:       '#f4fbf0',
+    loginGlow1:        'radial-gradient(circle, #bbf7d0 0%, transparent 70%)',
+    loginGlow2:        'radial-gradient(circle, #d9f99d 0%, transparent 70%)',
+    loginGlow3:        'radial-gradient(circle, #a3e635 0%, transparent 70%)',
+    loginDotColor:     '#65a30d',
+    loginHeadingText:  '#1c290d',
+    loginBodyText:     '#7a9a5e',
+    loginCardBg:       '#ffffff',
+    loginCardBorder:   '#d4e8c8',
+    loginCardText:     '#1c290d',
+    loginCardSubtext:  '#7a9a5e',
+    loginDivider:      '#d4e8c8',
+    loginDividerText:  '#a8b898',
+    loginFooterText:   '#a8b898',
+    loginBtnBg:        'linear-gradient(135deg, #ffffff, #f0f5eb)',
+    loginBtnText:      '#1c290d',
+    loginBtnHoverBg:   '#f8faf5',
+    loginAccentText:   '#65a30d',
+    loginIconBg:       'linear-gradient(135deg, #65a30d, #16a34a)',
   },
 
   'purple': {
@@ -354,6 +394,25 @@ const themes: Record<ThemeName, Theme> = {
     floatBadgeBorder:  '1px solid rgba(198,42,245,0.2)',
     floatBadgeShadow:  '0 8px 24px rgba(0,0,0,0.3)',
     floatIconBg:       'rgba(198,42,245,0.15)',
+    loginPageBg:       '#0a0614',
+    loginGlow1:        'radial-gradient(circle, rgba(198,42,245,0.18) 0%, transparent 70%)',
+    loginGlow2:        'radial-gradient(circle, rgba(69,170,242,0.15) 0%, transparent 70%)',
+    loginGlow3:        'radial-gradient(circle, rgba(198,42,245,0.08) 0%, transparent 70%)',
+    loginDotColor:     '#c62af5',
+    loginHeadingText:  '#ffffff',
+    loginBodyText:     '#9ca3af',
+    loginCardBg:       'rgba(255,255,255,0.04)',
+    loginCardBorder:   'rgba(255,255,255,0.08)',
+    loginCardText:     '#ffffff',
+    loginCardSubtext:  '#9ca3af',
+    loginDivider:      'rgba(255,255,255,0.08)',
+    loginDividerText:  '#6b7280',
+    loginFooterText:   '#4b5563',
+    loginBtnBg:        'linear-gradient(135deg, #ffffff, #f5f5f5)',
+    loginBtnText:      '#1f2937',
+    loginBtnHoverBg:   '#f9fafb',
+    loginAccentText:   '#e879f9',
+    loginIconBg:       'linear-gradient(135deg, #c62af5, #45aaf2)',
   },
 
   'navy-cyan': {
@@ -450,6 +509,25 @@ const themes: Record<ThemeName, Theme> = {
     floatBadgeBorder:  '1px solid rgba(6,182,212,0.2)',
     floatBadgeShadow:  '0 8px 24px rgba(0,0,0,0.4)',
     floatIconBg:       'rgba(6,182,212,0.15)',
+    loginPageBg:       '#030b1a',
+    loginGlow1:        'radial-gradient(circle, rgba(6,182,212,0.12) 0%, transparent 70%)',
+    loginGlow2:        'radial-gradient(circle, rgba(37,99,235,0.15) 0%, transparent 70%)',
+    loginGlow3:        'radial-gradient(circle, rgba(6,182,212,0.08) 0%, transparent 70%)',
+    loginDotColor:     '#06b6d4',
+    loginHeadingText:  '#ffffff',
+    loginBodyText:     '#93c5fd',
+    loginCardBg:       'rgba(255,255,255,0.04)',
+    loginCardBorder:   'rgba(255,255,255,0.06)',
+    loginCardText:     '#ffffff',
+    loginCardSubtext:  '#93c5fd',
+    loginDivider:      'rgba(255,255,255,0.06)',
+    loginDividerText:  '#60a5fa',
+    loginFooterText:   '#1e3a5f',
+    loginBtnBg:        'linear-gradient(135deg, #ffffff, #f0f7ff)',
+    loginBtnText:      '#1f2937',
+    loginBtnHoverBg:   '#f0f7ff',
+    loginAccentText:   '#67e8f9',
+    loginIconBg:       'linear-gradient(135deg, #0891b2, #2563eb)',
   },
 
   'orange': {
@@ -546,6 +624,25 @@ const themes: Record<ThemeName, Theme> = {
     floatBadgeBorder:  '1px solid #ffe4c4',
     floatBadgeShadow:  '0 8px 24px rgba(249,115,22,0.12)',
     floatIconBg:       '#fff7ed',
+    loginPageBg:       '#fffbf5',
+    loginGlow1:        'radial-gradient(circle, #fed7aa 0%, transparent 70%)',
+    loginGlow2:        'radial-gradient(circle, #fef08a 0%, transparent 70%)',
+    loginGlow3:        'radial-gradient(circle, #fdba74 0%, transparent 70%)',
+    loginDotColor:     '#f97316',
+    loginHeadingText:  '#1f2937',
+    loginBodyText:     '#a1836a',
+    loginCardBg:       '#ffffff',
+    loginCardBorder:   '#ffe4c4',
+    loginCardText:     '#1f2937',
+    loginCardSubtext:  '#a1836a',
+    loginDivider:      '#ffe4c4',
+    loginDividerText:  '#fed7aa',
+    loginFooterText:   '#a1836a',
+    loginBtnBg:        'linear-gradient(135deg, #f97316, #eab308)',
+    loginBtnText:      '#ffffff',
+    loginBtnHoverBg:   '#f97316',
+    loginAccentText:   '#f97316',
+    loginIconBg:       'linear-gradient(135deg, #f97316, #eab308)',
   },
 
   'rose': {
@@ -642,6 +739,25 @@ const themes: Record<ThemeName, Theme> = {
     floatBadgeBorder:  '1px solid #fecdd3',
     floatBadgeShadow:  '0 8px 24px rgba(244,63,94,0.1)',
     floatIconBg:       '#fff5f7',
+    loginPageBg:       '#ffffff',
+    loginGlow1:        'radial-gradient(circle, #fecdd3 0%, transparent 70%)',
+    loginGlow2:        'radial-gradient(circle, #fbcfe8 0%, transparent 70%)',
+    loginGlow3:        'radial-gradient(circle, #fda4af 0%, transparent 70%)',
+    loginDotColor:     '#f43f5e',
+    loginHeadingText:  '#1f2937',
+    loginBodyText:     '#be123c',
+    loginCardBg:       '#ffffff',
+    loginCardBorder:   '#fecdd3',
+    loginCardText:     '#1f2937',
+    loginCardSubtext:  '#be123c',
+    loginDivider:      '#fecdd3',
+    loginDividerText:  '#fecdd3',
+    loginFooterText:   '#be123c',
+    loginBtnBg:        'linear-gradient(135deg, #f43f5e, #ec4899)',
+    loginBtnText:      '#ffffff',
+    loginBtnHoverBg:   '#f43f5e',
+    loginAccentText:   '#f43f5e',
+    loginIconBg:       'linear-gradient(135deg, #f43f5e, #ec4899)',
   },
 
   'earth': {
@@ -738,6 +854,25 @@ const themes: Record<ThemeName, Theme> = {
     floatBadgeBorder:  '1px solid #e7e0d5',
     floatBadgeShadow:  '0 8px 24px rgba(194,65,12,0.1)',
     floatIconBg:       '#fef3eb',
+    loginPageBg:       '#faf7f2',
+    loginGlow1:        'radial-gradient(circle, #fed7aa 0%, transparent 70%)',
+    loginGlow2:        'radial-gradient(circle, #fde68a 0%, transparent 70%)',
+    loginGlow3:        'radial-gradient(circle, #fdba74 0%, transparent 70%)',
+    loginDotColor:     '#c2410c',
+    loginHeadingText:  '#44403c',
+    loginBodyText:     '#78716c',
+    loginCardBg:       '#ffffff',
+    loginCardBorder:   '#e7ddd0',
+    loginCardText:     '#44403c',
+    loginCardSubtext:  '#78716c',
+    loginDivider:      '#e7ddd0',
+    loginDividerText:  '#a89f91',
+    loginFooterText:   '#a89f91',
+    loginBtnBg:        'linear-gradient(135deg, #c2410c, #92400e)',
+    loginBtnText:      '#ffffff',
+    loginBtnHoverBg:   '#a1350a',
+    loginAccentText:   '#c2410c',
+    loginIconBg:       'linear-gradient(135deg, #c2410c, #92400e)',
   },
 }
 
