@@ -8,6 +8,7 @@ import Modal from '../components/ui/Modal'
 import { Field, Input, Select, AmountInput } from '../components/ui/FormField'
 import { Skeleton } from '../components/ui/Skeleton'
 import { cn } from '../lib/utils'
+import { theme } from '../lib/theme'
 
 // ── Reconciliation Wizard ─────────────────────────────────────────────────────
 
@@ -141,7 +142,9 @@ function ReconciliationWizard({ accounts, onClose, onDone }: {
           Kembali
         </button>
         <button type="button" onClick={handleConfirm} disabled={saving}
-          className="flex-1 px-4 py-2.5 rounded-xl bg-brand-500 text-white text-sm font-semibold hover:bg-brand-600 transition-colors disabled:opacity-50">
+          className="flex-1 px-4 py-2.5 rounded-xl text-white text-sm font-semibold transition-colors disabled:opacity-50 hover:-translate-y-0.5"
+          style={{ background: theme.btnBg }}
+          >
           {saving ? 'Menyimpan...' : preview.needs_adjustment ? 'Simpan & Sesuaikan' : 'Konfirmasi'}
         </button>
       </div>
@@ -179,7 +182,9 @@ function ReconciliationWizard({ accounts, onClose, onDone }: {
         <button type="button" onClick={onClose}
           className="flex-1 px-4 py-2.5 rounded-xl border border-gray-200 text-sm font-medium text-gray-600 hover:bg-gray-50 transition-colors">Batal</button>
         <button type="submit" disabled={saving}
-          className="flex-1 px-4 py-2.5 rounded-xl bg-brand-500 text-white text-sm font-semibold hover:bg-brand-600 transition-colors disabled:opacity-50">
+          className="flex-1 px-4 py-2.5 rounded-xl text-white text-sm font-semibold transition-colors disabled:opacity-50 hover:-translate-y-0.5"
+          style={{ background: theme.btnBg }}
+          >
           {saving ? 'Memeriksa...' : 'Cek Selisih →'}
         </button>
       </div>
@@ -248,7 +253,9 @@ export default function ReconciliationsPage() {
           <p className="text-gray-400 text-sm">Cocokkan saldo sistem dengan saldo fisik</p>
         </div>
         <button onClick={() => setShowWizard(true)}
-          className="flex items-center gap-2 px-4 py-2.5 bg-brand-500 text-white text-sm font-semibold rounded-xl hover:bg-brand-600 transition-colors shadow-sm">
+          className="flex items-center gap-2 px-4 py-2.5 text-white text-sm font-semibold rounded-xl transition-colors shadow-sm hover:-translate-y-0.5"
+          style={{ background: theme.btnBg }}
+          >
           <Plus size={16} /> Rekonsiliasi
         </button>
       </div>
@@ -304,7 +311,9 @@ export default function ReconciliationsPage() {
             <p className="font-display font-bold text-gray-900 mb-1">Belum ada riwayat</p>
             <p className="text-sm text-gray-400 mb-5">Lakukan rekonsiliasi pertama kamu</p>
             <button onClick={() => setShowWizard(true)}
-              className="flex items-center gap-2 px-4 py-2.5 bg-brand-500 text-white text-sm font-semibold rounded-xl hover:bg-brand-600 transition-colors">
+              className="flex items-center gap-2 px-4 py-2.5 text-white text-sm font-semibold rounded-xl transition-colors hover:-translate-y-0.5"
+              style={{ background: theme.btnBg }}
+              >
               <Plus size={16} /> Rekonsiliasi Sekarang
             </button>
           </div>

@@ -13,7 +13,7 @@ import ConfirmDialog from '../components/ui/ConfirmDialog'
 import { Field, Input, AmountInput } from '../components/ui/FormField'
 import { Skeleton } from '../components/ui/Skeleton'
 import { cn } from '../lib/utils'
-import { theme }          from '../lib/theme'
+import { theme } from '../lib/theme'
 
 
 // ── Helpers ────────────────────────────────────────────────────────────────
@@ -133,7 +133,9 @@ function AccountForm({ initial, onSubmit, onClose, loading }: AccountFormProps) 
           Batal
         </button>
         <button type="submit" disabled={loading}
-          className="flex-1 py-2.5 rounded-xl bg-gradient-to-r from-brand-500 to-brand-600 text-white text-sm font-semibold hover:from-brand-600 hover:to-brand-700 transition-all shadow-glow-sm disabled:opacity-50">
+          className="flex-1 py-2.5 rounded-xl bg-gradient-to-r text-white text-sm font-semibold transition-all shadow-glow-sm disabled:opacity-50 hover:-translate-y-0.5"
+          style={{ background: theme.btnBg }}
+          >
           {loading ? 'Menyimpan...' : initial ? 'Simpan Perubahan' : 'Buat Rekening'}
         </button>
       </div>
@@ -504,7 +506,8 @@ export default function AccountsPage() {
         </div>
         <button
           onClick={() => setCreateOpen(true)}
-          className="flex items-center gap-2 px-4 py-2.5 rounded-xl bg-gradient-to-r from-brand-500 to-brand-600 text-white text-sm font-semibold shadow-glow-sm hover:from-brand-600 hover:to-brand-700 transition-all"
+          className="flex items-center gap-2 px-4 py-2.5 rounded-xl bg-gradient-to-r text-white text-sm font-semibold shadow-glow-smtransition-all hover:-translate-y-0.5"
+          style={{ background: theme.btnBg }}
         >
           <Plus size={16} /> Tambah
         </button>
@@ -585,7 +588,9 @@ export default function AccountsPage() {
           <p className="font-display font-semibold text-gray-700 mb-1">Belum ada rekening</p>
           <p className="text-gray-400 text-sm mb-6">Tambahkan rekening pertamamu untuk mulai mencatat</p>
           <button onClick={() => setCreateOpen(true)}
-            className="flex items-center gap-2 px-5 py-2.5 rounded-xl bg-brand-500 text-white text-sm font-semibold hover:bg-brand-600 transition-colors">
+            className="flex items-center gap-2 px-5 py-2.5 rounded-xl text-white text-sm font-semibold transition-colors hover:-translate-y-0.5"
+            style={{ background: theme.btnBg }}
+            >
             <Plus size={16} /> Tambah Rekening
           </button>
         </div>

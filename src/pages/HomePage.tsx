@@ -1,7 +1,7 @@
 import { NavLink, useNavigate } from 'react-router-dom'
 import { useState, useEffect, useRef } from 'react'
 import {
-  ArrowRight, BarChart2, Wallet, ArrowLeftRight, CreditCard, PiggyBank,
+  ArrowRight, BarChart2, MonitorCheck, ArrowLeftRight, CreditCard, PiggyBank,
   HandCoins, RefreshCw,
   TrendingUp, Shield, Zap, CheckCircle, Sprout,
   BarChart3, ArrowUpDown, LayoutDashboard,
@@ -355,7 +355,7 @@ const FEATURES = [
 const MINI = [
   { icon: ArrowLeftRight, emoji: '↔️', title: 'Transfer Antar Rekening', desc: 'Pindahkan saldo dengan mudah, termasuk pencatatan biaya admin.' },
   { icon: HandCoins,      emoji: '🤝', title: 'Hutang & Piutang',         desc: 'Lacak pinjaman dengan progress cicilan, jatuh tempo, dan status lunas.' },
-  { icon: Wallet,         emoji: '🏦', title: 'Multi Rekening',           desc: 'Bank, tunai, e-wallet, investasi — semua di satu tempat.' },
+  { icon: MonitorCheck,         emoji: '🏦', title: 'Multi Rekening',           desc: 'Bank, tunai, e-wallet, investasi — semua di satu tempat.' },
   { icon: RefreshCw,      emoji: '⚖️', title: 'Rekonsiliasi Saldo',       desc: 'Cocokkan saldo sistem dengan rekening koran. Selisih dicatat otomatis.' },
   { icon: Shield,         emoji: '🔒', title: 'Login Aman via Google',    desc: 'Autentikasi Google OAuth + Supabase JWT. Data kamu terenkripsi.' },
   { icon: Zap,            emoji: '⚡', title: 'Cepat & Responsif',        desc: 'Dibuat dengan React + Go. Ringan, cepat, nyaman di HP maupun desktop.' },
@@ -416,7 +416,7 @@ export default function HomePage() {
         style={{ background: `${theme.heroBg}ee`, borderBottom: `1px solid ${theme.mockupChromeBorder}` }}>
         <div className="flex items-center gap-3">
           <div className="w-9 h-9 rounded-xl flex items-center justify-center shadow-sm" style={{ background: theme.logoBg }}>
-            <Wallet size={17} className="text-white" />
+            <MonitorCheck size={17} className="text-white" />
           </div>
           <span className={cn('font-display font-bold text-lg', theme.heroHeadingText)}>UMKM P.O.S</span>
         </div>
@@ -562,7 +562,7 @@ export default function HomePage() {
           <div className="max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between gap-4">
             <div className="flex items-center gap-3">
               <div className="w-7 h-7 rounded-lg flex items-center justify-center" style={{ background: theme.logoBg }}>
-                <Wallet size={13} className="text-white" />
+                <MonitorCheck size={13} className="text-white" />
               </div>
               <span className={cn('font-display font-bold', theme.heroHeadingText)}>UMKM P.O.S</span>
             </div>

@@ -2,7 +2,7 @@ import { Outlet, NavLink, useNavigate } from 'react-router-dom'
 import { useState } from 'react'
 import {
   LayoutDashboard, ArrowLeftRight, CreditCard, PiggyBank,
-  BarChart3, LogOut, Menu, X, Wallet,
+  BarChart3, LogOut, Menu, X, MonitorCheck,
   ArrowUpDown, Tag, HandCoins, RefreshCw, ChevronRight, ChevronLeft,
   FileSpreadsheet
 } from 'lucide-react'
@@ -87,11 +87,11 @@ export default function AppLayout() {
             <div className="w-8 h-8 rounded-xl flex items-center justify-center flex-shrink-0"
               style={{ background: theme.logoBg }}
             >
-              <Wallet size={15} className="text-white" />
+              <MonitorCheck size={15} className="text-white" />
             </div>
             <div className="min-w-0">
-              <h1 className="font-display font-bold text-gray-900 text-sm leading-none">Dompet Keluargaku</h1>
-              <p className="text-[10px] text-gray-400 mt-0.5 truncate">Keuangan Rumah Tangga</p>
+              <h1 className="font-display font-bold text-gray-900 text-sm leading-none">Point of Sales</h1>
+              <p className="text-[10px] text-gray-400 mt-0.5 truncate">UMKM</p>
             </div>
           </div>
         )}
@@ -108,8 +108,13 @@ export default function AppLayout() {
         >
           {
           collapsed
-            ? <ChevronRight size={15} />
-            : <ChevronLeft size={15} className="text-white" /> // ganti jadi Logo
+            ? 
+            <div className="w-8 h-8 rounded-xl flex items-center justify-center flex-shrink-0"
+              style={{ background: theme.logoBg }}
+            >
+              <MonitorCheck size={15} className="text-white" />
+            </div>
+            : <ChevronLeft size={15} />
           }
         </button>
       </div>
@@ -275,9 +280,9 @@ export default function AppLayout() {
             <div className="w-7 h-7 rounded-lg flex items-center justify-center"
             style={{ background: theme.logoBg }}
             >
-              <Wallet size={14} className="text-white" />
+              <MonitorCheck size={14} className="text-white" />
             </div>
-            <span className="font-display font-bold text-gray-900 text-sm">Dompet Keluargaku</span>
+            <span className="font-display font-bold text-gray-900 text-sm">UMKM POS</span>
           </div>
         </header>
 

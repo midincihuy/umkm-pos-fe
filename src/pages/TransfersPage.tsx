@@ -13,6 +13,7 @@ import { Skeleton } from '../components/ui/Skeleton'
 import { useOnboarding } from '../hooks/useOnboarding'
 import AddSecondAccountPrompt from '../components/onboarding/AddSecondAccountPrompt'
 import { AccountSelectCompact } from '../components/ui/AccountSelect'
+import { theme } from '../lib/theme'
 
 const now = new Date()
 
@@ -122,7 +123,9 @@ function TransferForm({
           Batal
         </button>
         <button type="submit" disabled={loading}
-          className="flex-1 px-4 py-2.5 rounded-xl bg-brand-500 text-white text-sm font-semibold hover:bg-brand-600 transition-colors disabled:opacity-50">
+          className="flex-1 px-4 py-2.5 rounded-xl text-white text-sm font-semibold transition-colors disabled:opacity-50 hover:-translate-y-0.5"
+          style={{ background: theme.btnBg }}
+          >
           {loading ? 'Menyimpan...' : 'Transfer'}
         </button>
       </div>
@@ -262,7 +265,8 @@ export default function TransfersPage() {
         </div>
         <button
           onClick={() => setShowCreate(true)}
-          className="flex items-center gap-2 px-4 py-2.5 bg-brand-500 text-white text-sm font-semibold rounded-xl hover:bg-brand-600 transition-colors shadow-sm"
+          className="flex items-center gap-2 px-4 py-2.5 text-white text-sm font-semibold rounded-xl transition-colors shadow-sm"
+          style={{ background: theme.btnBg }}
         >
           <Plus size={16} /> Transfer
         </button>
@@ -298,7 +302,9 @@ export default function TransfersPage() {
             <p className="font-display font-bold text-gray-900 mb-1">Belum ada transfer</p>
             <p className="text-sm text-gray-400 mb-5">Pindahkan saldo antar rekening kamu</p>
             <button onClick={() => setShowCreate(true)}
-              className="flex items-center gap-2 px-4 py-2.5 bg-brand-500 text-white text-sm font-semibold rounded-xl hover:bg-brand-600 transition-colors">
+              className="flex items-center gap-2 px-4 py-2.5 text-white text-sm font-semibold rounded-xl transition-colors hover:-translate-y-0.5"
+              style={{ background: theme.btnBg }}
+              >
               <Plus size={16} /> Buat Transfer
             </button>
           </div>

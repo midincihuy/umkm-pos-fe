@@ -16,6 +16,7 @@ import { api, TrendItem } from '../lib/api'
 import { formatRupiah, MONTH_NAMES } from '../lib/utils'
 import { Skeleton } from '../components/ui/Skeleton'
 import { cn } from '../lib/utils'
+import { theme } from '../lib/theme'
 
 // Register Chart.js components
 Chart.register(
@@ -478,8 +479,8 @@ export default function ReportsPage() {
       <div className="bg-white rounded-2xl shadow-card p-5 mb-5 animate-fade-up" style={{ animationDelay: '160ms', animationFillMode: 'both' }}>
         <div className="flex items-center justify-between mb-5">
           <div className="flex items-center gap-2">
-            <div className="w-8 h-8 rounded-xl bg-brand-400/15 flex items-center justify-center">
-              <BarChart2 size={15} className="text-brand-600" />
+            <div className={cn(theme.badgeBg, "w-8 h-8 rounded-xl flex items-center justify-center")}>
+              <BarChart2 size={15} className={cn(theme.accentText)} />
             </div>
             <div>
               <h3 className="font-display font-bold text-gray-900 text-sm">Trend Keuangan</h3>
@@ -495,7 +496,7 @@ export default function ReportsPage() {
                 className={cn(
                   'px-3 py-1.5 rounded-lg text-xs font-semibold transition-all',
                   trendMonths === months
-                    ? 'bg-white text-brand-600 shadow-sm'
+                    ? cn(theme.accentText, 'bg-white shadow-sm')
                     : 'text-gray-400 hover:text-gray-600',
                 )}
               >
@@ -511,8 +512,9 @@ export default function ReportsPage() {
       <div className="animate-fade-up" style={{ animationDelay: '200ms', animationFillMode: 'both' }}>
         <div className="bg-white rounded-2xl shadow-card p-5">
           <div className="flex items-center gap-2 mb-5">
-            <div className="w-8 h-8 rounded-xl bg-brand-400/15 flex items-center justify-center">
-              <Wallet size={15} className="text-brand-600" />
+            <div className={cn(theme.badgeBg, "w-8 h-8 rounded-xl flex items-center justify-center")}
+            >
+              <Wallet size={15} className={cn(theme.accentText)} />
             </div>
             <div>
               <h3 className="font-display font-bold text-gray-900 text-sm">Net Worth</h3>
@@ -520,7 +522,7 @@ export default function ReportsPage() {
             </div>
             {!isLoading && data && (
               <div className="ml-auto text-right">
-                <p className="font-mono font-bold text-brand-600">{maskValue(formatRupiah(data.net_worth))}</p>
+                <p className={cn(theme.accentText, "font-mono font-bold")}>{maskValue(formatRupiah(data.net_worth))}</p>
                 <p className="text-xs text-gray-400">total aset</p>
               </div>
             )}

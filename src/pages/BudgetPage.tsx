@@ -11,6 +11,7 @@ import ConfirmDialog from '../components/ui/ConfirmDialog'
 import { Field, Select, AmountInput } from '../components/ui/FormField'
 import { Skeleton } from '../components/ui/Skeleton'
 import { cn } from '../lib/utils'
+import { theme } from '../lib/theme'
 
 const now = new Date()
 
@@ -99,7 +100,9 @@ function BudgetForm({ month, year, onSubmit, onClose, loading, existingCategoryI
           Batal
         </button>
         <button type="submit" disabled={loading || allCategories.length === 0}
-          className="flex-1 py-2.5 rounded-xl bg-gradient-to-r from-brand-500 to-brand-600 text-white text-sm font-semibold disabled:opacity-50 hover:from-brand-600 hover:to-brand-700 transition-all">
+          className="flex-1 py-2.5 rounded-xl bg-gradient-to-r text-white text-sm font-semibold disabled:opacity-50 transition-all hover:-translate-y-0.5"
+          style={{ background: theme.btnBg }}
+          >
           {loading ? 'Menyimpan...' : 'Simpan Budget'}
         </button>
       </div>
@@ -157,7 +160,9 @@ function CopyModal({ toMonth, toYear, onSubmit, onClose, loading }: CopyModalPro
           Batal
         </button>
         <button type="submit" disabled={loading}
-          className="flex-1 py-2.5 rounded-xl bg-gradient-to-r from-brand-500 to-brand-600 text-white text-sm font-semibold disabled:opacity-50 hover:from-brand-600 hover:to-brand-700 transition-all">
+          className="flex-1 py-2.5 rounded-xl bg-gradient-to-r text-white text-sm font-semibold disabled:opacity-50 transition-all"
+          style={{ background: theme.btnBg }}
+          >
           {loading ? 'Menyalin...' : 'Salin Budget'}
         </button>
       </div>
@@ -288,7 +293,9 @@ function EditBudgetModal({ budget, onSubmit, onClose, loading }: {
           Batal
         </button>
         <button type="submit" disabled={loading}
-          className="flex-1 py-2.5 rounded-xl bg-gradient-to-r from-brand-500 to-brand-600 text-white text-sm font-semibold disabled:opacity-50">
+          className="flex-1 py-2.5 rounded-xl bg-gradient-to-r text-white text-sm font-semibold disabled:opacity-50 hover:-translate-y-0.5"
+          style={{ background: theme.btnBg }}
+          >
           {loading ? 'Menyimpan...' : 'Simpan'}
         </button>
       </div>
@@ -386,11 +393,13 @@ export default function BudgetPage() {
         </div>
         <div className="flex gap-2">
           <button onClick={() => setCopyOpen(true)}
-            className="flex items-center gap-1.5 px-3 py-2.5 rounded-xl border border-gray-200 text-gray-600 text-sm font-medium hover:bg-gray-50 transition-colors">
+            className="flex items-center gap-1.5 px-3 py-2.5 rounded-xl border border-gray-200 text-gray-600 text-sm font-medium hover:bg-gray-50 transition-colors hover:-translate-y-0.5">
             <Copy size={15} /> Salin
           </button>
           <button onClick={() => setAddOpen(true)}
-            className="flex items-center gap-1.5 px-4 py-2.5 rounded-xl bg-gradient-to-r from-brand-500 to-brand-600 text-white text-sm font-semibold shadow-glow-sm hover:from-brand-600 hover:to-brand-700 transition-all">
+            className="flex items-center gap-1.5 px-4 py-2.5 rounded-xl bg-gradient-to-r text-white text-sm font-semibold shadow-glow-sm transition-all hover:-translate-y-0.5"
+            style={{ background: theme.btnBg }}
+            >
             <Plus size={15} /> Tambah
           </button>
         </div>
@@ -546,7 +555,9 @@ export default function BudgetPage() {
               <Copy size={15} /> Salin Budget
             </button>
             <button onClick={() => setAddOpen(true)}
-              className="flex items-center gap-2 px-4 py-2.5 rounded-xl bg-brand-500 text-white text-sm font-semibold hover:bg-brand-600 transition-colors">
+              className="flex items-center gap-2 px-4 py-2.5 rounded-xl text-white text-sm font-semibold transition-colors hover:-translate-y-0.5"
+              style={{ background: theme.btnBg }}
+              >
               <Plus size={15} /> Buat Budget
             </button>
           </div>

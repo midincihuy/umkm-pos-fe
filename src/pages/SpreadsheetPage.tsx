@@ -6,6 +6,7 @@ import { api } from '../lib/api'
 import { GooglePicker } from '../components/GooglePicker'
 import ConfirmDialog from '../components/ui/ConfirmDialog'
 import { useToast } from '../components/ui/Toast'
+import { theme } from '../lib/theme'
 
 const SpreadsheetPage: React.FC = () => {
   const { status, refetch, spreadsheetId } = useOnboarding()
@@ -152,7 +153,8 @@ const SpreadsheetPage: React.FC = () => {
         {/* Back to dashboard button */}
         <button
           onClick={() => navigate('/dashboard')}
-          className="w-full py-2.5 px-4 rounded-lg bg-blue-600 text-white font-medium hover:bg-blue-700 transition-colors"
+          className="w-full py-2.5 px-4 rounded-lg text-white font-medium transition-colors hover:-translate-y-0.5"
+          style={{ background: theme.btnBg }}
         >
           Kembali ke Dashboard
         </button>

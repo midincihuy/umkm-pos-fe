@@ -4,6 +4,8 @@ import { api, AccountType } from '../../lib/api'
 import { Field, Input, AmountInput } from '../ui/FormField'
 import { useToast } from '../ui/Toast'
 import { cn } from '../../lib/utils'
+import { theme } from '../../lib/theme'
+
 
 const ACCOUNT_TYPES: {
   value: AccountType; label: string; emoji: string; desc: string
@@ -54,7 +56,9 @@ export default function AddSecondAccountPrompt({ firstAccountName, onDone }: Pro
         <div className="relative mb-8">
           {/* Dua kartu rekening yang saling overlap */}
           <div className="relative w-52 h-28">
-            <div className="absolute left-0 top-4 w-40 h-24 rounded-2xl bg-gradient-to-br from-brand-400 to-brand-600 shadow-lg rotate-[-6deg] flex flex-col justify-between p-4">
+            <div className="absolute left-0 top-4 w-40 h-24 rounded-2xl shadow-lg rotate-[-6deg] flex flex-col justify-between p-4"
+            style={{ background: theme.btnBg }}
+            >
               <div className="flex items-center gap-2">
                 <span className="text-lg">🏦</span>
                 <div className="h-1.5 w-16 bg-white/30 rounded-full" />
@@ -87,7 +91,8 @@ export default function AddSecondAccountPrompt({ firstAccountName, onDone }: Pro
 
         <button
           onClick={() => setShowForm(true)}
-          className="flex items-center gap-2.5 px-6 py-3.5 rounded-2xl bg-gradient-to-r from-brand-500 to-ocean-400 text-white font-bold text-sm hover:from-brand-400 hover:to-ocean-300 transition-all shadow-glow-sm hover:-translate-y-0.5 group"
+          className="flex items-center gap-2.5 px-6 py-3.5 rounded-2xl text-white font-bold text-sm transition-all shadow-glow-sm hover:-translate-y-0.5 group"
+          style={{ background: theme.btnBg }}
         >
           <CreditCard size={16} />
           Tambah Rekening Kedua
@@ -169,7 +174,9 @@ export default function AddSecondAccountPrompt({ firstAccountName, onDone }: Pro
         </div>
 
         <button type="submit" disabled={saving}
-          className="w-full py-3 rounded-2xl bg-gradient-to-r from-brand-500 to-ocean-400 text-white font-bold text-sm hover:from-brand-400 hover:to-ocean-300 transition-all shadow-glow-sm disabled:opacity-50 flex items-center justify-center gap-2">
+          className="w-full py-3 rounded-2xl text-white font-bold text-sm transition-all shadow-glow-sm disabled:opacity-50 flex items-center justify-center gap-2"
+          style={{ background: theme.btnBg }}
+          >
           {saving ? 'Menyimpan...' : 'Buat Rekening'}
           {!saving && <ChevronRight size={15} />}
         </button>

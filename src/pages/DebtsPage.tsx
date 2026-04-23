@@ -13,6 +13,7 @@ import { Field, Input, Select, AmountInput } from '../components/ui/FormField'
 import { Skeleton } from '../components/ui/Skeleton'
 import { cn } from '../lib/utils'
 import { AccountSelectCompact } from '../components/ui/AccountSelect'
+import { theme } from '../lib/theme'
 
 const now = new Date()
 // ── Helpers ───────────────────────────────────────────────────────────────────
@@ -129,7 +130,9 @@ function CreateDebtForm({ accounts, onSubmit, onClose, loading }: {
         <button type="button" onClick={onClose}
           className="flex-1 px-4 py-2.5 rounded-xl border border-gray-200 text-sm font-medium text-gray-600 hover:bg-gray-50 transition-colors">Batal</button>
         <button type="submit" disabled={loading}
-          className="flex-1 px-4 py-2.5 rounded-xl bg-brand-500 text-white text-sm font-semibold hover:bg-brand-600 transition-colors disabled:opacity-50">
+          className="flex-1 px-4 py-2.5 rounded-xl text-white text-sm font-semibold transition-colors disabled:opacity-50 hover:-translate-y-0.5"
+          style={{ background: theme.btnBg }}
+          >
           {loading ? 'Menyimpan...' : 'Simpan'}
         </button>
       </div>
@@ -408,7 +411,9 @@ export default function DebtsPage() {
           <p className="text-gray-400 text-sm">Kelola kewajiban keuangan</p>
         </div>
         <button onClick={() => setShowCreate(true)}
-          className="flex items-center gap-2 px-4 py-2.5 bg-brand-500 text-white text-sm font-semibold rounded-xl hover:bg-brand-600 transition-colors shadow-sm">
+          className="flex items-center gap-2 px-4 py-2.5 text-white text-sm font-semibold rounded-xl transition-colors shadow-sm hover:-translate-y-0.5"
+          style={{ background: theme.btnBg }}
+          >
           <Plus size={16} /> Tambah
         </button>
       </div>
@@ -429,11 +434,13 @@ export default function DebtsPage() {
 
       {/* Filters */}
       <div className="flex flex-wrap gap-2 mb-4 animate-fade-up" style={{ animationDelay: '60ms', animationFillMode: 'both' }}>
-        <div className="flex bg-white rounded-xl shadow-card p-1 gap-1">
+        <div className="flex rounded-xl shadow-card p-1 gap-1">
           {TYPES.map(({ value, label }) => (
             <button key={value} onClick={() => setFilterType(value)}
               className={cn('px-3 py-1.5 rounded-lg text-xs font-semibold transition-all',
-                filterType === value ? 'bg-brand-500 text-white' : 'text-gray-400 hover:text-gray-600')}>
+                filterType === value ? 'text-white' : 'text-gray-400 hover:text-gray-600')} 
+                style={filterType === value ? { background: theme.btnBg } : {}}
+                >
               {label}
             </button>
           ))}
@@ -470,7 +477,9 @@ export default function DebtsPage() {
             </p>
             <p className="text-sm text-gray-400 mb-5">Catat pinjaman atau hutang kamu di sini</p>
             <button onClick={() => setShowCreate(true)}
-              className="flex items-center gap-2 px-4 py-2.5 bg-brand-500 text-white text-sm font-semibold rounded-xl hover:bg-brand-600 transition-colors">
+              className="flex items-center gap-2 px-4 py-2.5 text-white text-sm font-semibold rounded-xl transition-colors hover:-translate-y-0.5"
+              style={{ background: theme.btnBg }}
+              >
               <Plus size={16} /> Tambah
             </button>
           </div>

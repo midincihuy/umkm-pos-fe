@@ -10,6 +10,7 @@ import ConfirmDialog from '../components/ui/ConfirmDialog'
 import TransactionForm from '../components/transactions/TransactionForm'
 import { TransactionRowSkeleton } from '../components/ui/Skeleton'
 import { cn } from '../lib/utils'
+import { theme } from '../lib/theme'
 
 const now = new Date()
 
@@ -186,7 +187,9 @@ export default function TransactionsPage() {
           </button>
         </div>
         <button onClick={() => setCreateOpen(true)}
-          className="flex items-center gap-2 px-4 py-2.5 rounded-xl bg-gradient-to-r from-brand-500 to-brand-600 text-white text-sm font-semibold shadow-glow-sm hover:from-brand-600 hover:to-brand-700 transition-all">
+          className="flex items-center gap-2 px-4 py-2.5 rounded-xl bg-gradient-to-r text-white text-sm font-semibold shadow-glow-sm transition-all hover:-translate-y-0.5"
+          style={{ background: theme.btnBg }}
+          >
           <Plus size={16} /> Tambah
         </button>
       </div>
