@@ -67,11 +67,11 @@ export default function LoginPage() {
 
           <h1 className="font-display text-3xl font-bold mb-2 tracking-tight"
               style={{ color: theme.loginHeadingText }}>
-            Dompet Keluargaku
+            UMKM Point of Sales
           </h1>
           <p className="text-sm font-body"
              style={{ color: theme.loginBodyText }}>
-            Catat keuangan rumah tangga dengan mudah
+            Catat Transaksi UMKM dengan mudah
           </p>
         </div>
 
